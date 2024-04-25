@@ -1,17 +1,18 @@
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar/Navbar"
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import './App.css'
 
 
 function App() {
 
 
-
-
   return (
-<div>
-  <Navbar />
-  <h1>Hola mundo!</h1>
-</div>
+    <div>
+      <Navbar />
+      <ItemListContainer saludo = "Bienvenidos a Jiu Jitsu Store" />
+
+
+     </div>
   )
 }
 
