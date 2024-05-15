@@ -5,7 +5,7 @@ const products = [
         descripcion: "Kimono Vital Negro",
         price: 100000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/ginegro1.webp"
     },
     {
@@ -14,7 +14,7 @@ const products = [
         descripcion: "Kimono Vital Negro",
         price: 110000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/ginegro2.webp"
       },
     {
@@ -23,7 +23,7 @@ const products = [
         descripcion: "Kimono Vital Azul",
         price: 120000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/giazul1.webp"
        },
     {
@@ -32,7 +32,7 @@ const products = [
         descripcion: "Kimono Vital Blanco",
         price: 130000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/giblanco.webp"
      },
     {
@@ -41,7 +41,7 @@ const products = [
         descripcion: "Kimono Vital Verde Agua",
         price: 140000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/giverdeagua.webp"
     },
     {
@@ -50,8 +50,26 @@ const products = [
         descripcion: "Kimono Vital Naranja",
         price: 160000,
         stock: 5,
-        category: "Kimonos",
+        category: "kimonos",
         image: "/src/assets/ginaranja.webp"
+    },
+    {
+        id: "rash1",
+        name: "Rashguard Vouk Morado",
+        descripcion: "Rashguard Roxa",
+        price: 40000,
+        stock: 10,
+        category: "nogi",
+        image: "/src/assets/rashvoukroxa.webp"
+    },
+    {
+        id: "rash2",
+        name: "Rashguard Vouk Marrón",
+        descripcion: "Rashguard Marron",
+        price: 40000,
+        stock: 10,
+        category: "nogi",
+        image: "/src/assets/rashvoukmarron.webp"
     }
 ]
 
