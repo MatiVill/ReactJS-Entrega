@@ -3,6 +3,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ComponentePadre from "./components/Examples/ComponentePadre";
 import EjemploContador from "./components/Examples/EjemploContador";
 import ItemCount from "./components/ItemCount/ItemCount";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import './App.css'
 
 
@@ -13,8 +14,8 @@ function App() {
     <div>
       <Navbar />
       <ItemListContainer saludo = "Bienvenidos a Jiu Jitsu Store" />
-      <ItemCount stock={10} />
-      <ItemCount stock={4} />
+      <ItemDetailContainer />
+
 
 
      </div>
