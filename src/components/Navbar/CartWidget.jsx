@@ -1,12 +1,13 @@
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
+import "./cartwidget.css"
 
 const CartWidget = () => {
 
 
     return(
-    <div>
+        <div className="cartwidget">
         <PiShoppingCartSimpleFill size={50}/>
-        <p> 1 </p>
+        <p className="number">1</p>
     </div>        
     )
 }

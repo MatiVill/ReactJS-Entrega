@@ -5,16 +5,16 @@ import {Link} from "react-router-dom"
 const Navbar = () => {
 
     return (
-        <div className="nav-bar">
-            <div>
-                <img style={{ width: "140px" }} src="https://static.vecteezy.com/system/resources/previews/015/639/640/original/jiu-jitsu-martial-art-illustration-perfect-for-t-shirt-design-and-martial-art-training-club-logo-design-vector.jpg" alt="" />
-            </div>
+        <div className="navbar">
+            <Link to="/">
+                <img className="brand logo" src="https://static.vecteezy.com/system/resources/previews/015/639/640/original/jiu-jitsu-martial-art-illustration-perfect-for-t-shirt-design-and-martial-art-training-club-logo-design-vector.jpg" alt="" />
+            </Link>
 
-            <ul>
-                <Link to="/category/kimonos" className="category" >Kimonos</Link>
-                <Link to="/category/nogi" className="category">Nogi</Link>
-                <Link to="/category/street" className="category">Street</Link>
-                <Link to="/category/accesorios" className="category">Accesorios</Link>
+            <ul className="categorias">
+                <Link to="/category/kimonos" className="categoria" >Kimonos</Link>
+                <Link to="/category/nogi" className="categoria">Nogi</Link>
+                <Link to="/category/street" className="categoria">Street</Link>
+                <Link to="/category/accesorios" className="categoria">Accesorios</Link>
             </ul>
             <CartWidget />
         </div>

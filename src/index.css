@@ -2,4 +2,16 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgba(31, 31, 31, 0);
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

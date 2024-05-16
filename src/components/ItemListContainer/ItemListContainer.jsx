@@ -1,4 +1,4 @@
-import "./ItemListContainer.scss";
+import "./ItemListContainer.css";
 import getProducts from "../../data/data";
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
@@ -8,8 +8,6 @@ import { useParams } from "react-router-dom"
 const ItemListContainer = ({ saludo }) => {
     const [products, setProducts] = useState([])
     const { idCategory } = useParams()
-
-
 
     useEffect(() => {
         getProducts()
@@ -31,8 +29,8 @@ const ItemListContainer = ({ saludo }) => {
     }, [idCategory]);
 
     return (
-        <div>
-            <p className="item-list-container">{saludo}</p>
+        <div className="item-list-container">
+            <h2 className="title-item-list-container">{saludo}</h2>
             <ItemList products={products} />
         </div>
     )
