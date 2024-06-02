@@ -17,8 +17,8 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<ItemListContainer saludo="Bienvenidos a Jiu Jitsu Store" />} />
-          <Route path="/category/:idCategory" element={<ItemListContainer saludo="Bienvenidos a Jiu Jitsu Store" />} />
+          <Route path="/" element={<ItemListContainer  />} />
+          <Route path="/category/:idCategory" element={<ItemListContainer  />} />
           <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
           <Route path="/ejemplos" element={<EjemploFormulario />} />
           <Route path="/cart" element={<Cart />} />

@@ -6,3 +6,11 @@
   .cartwidget .number{
     padding: 0 5px;
   }
+
+.cart-grey {
+  color: grey;
+}
+
+.cart-black {
+  color: black;
+}
