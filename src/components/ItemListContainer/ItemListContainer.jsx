@@ -1,8 +1,9 @@
 import "./ItemListContainer.css";
-import getProducts from "../../data/data";
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import db from "../../db/db.js";
 
 
 const ItemListContainer = () => {
@@ -10,36 +11,48 @@ const ItemListContainer = () => {
     const [loading, setLoading] = useState(false)
     const { idCategory } = useParams()
 
+    const getProducts = () => {
+        const productsRef = collection(db, "products")
+        getDocs(productsRef)
+            .then((productsDb) => {
+                const data = productsDb.docs.map((product) => {
+                    return { id: product.id, ...product.data() }
+                })
+
+                setProducts(data)
+            })
+    }
+
+    const getProductsByCategory = () => {
+        const productsRef = collection(db, "products")
+        const q = query(productsRef, where("category", "==", idCategory))
+        getDocs(q)
+            .then((productsDb) => {
+                const data = productsDb.docs.map((product) => {
+                    return { id: product.id, ...product.data() }
+                })
+
+                setProducts(data)
+            })
+    }
+
     useEffect(() => {
-        setLoading(true)
-
-        getProducts()
-            .then((respuesta) => {
-                if (idCategory) {
-                    const productsFilter = respuesta.filter((productRes) => productRes.category === idCategory)
-                    setProducts(productsFilter)
-                } else {
-                    setProducts(respuesta);
-                }
-
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        if (idCategory) {
+            getProductsByCategory()
+        } else {
+            getProducts()
+        }
     }, [idCategory]);
 
     return (
         <div className="item-list-container">
-            <h2 className="title-item-list-container"> 
-            { idCategory 
-            ? `Filtrado por: ${idCategory}` 
-            : "Bienvenido a Jiu Jitsu Store" }
+            <h2 className="title-item-list-container">
+                {idCategory
+                    ? `Filtrado por: ${idCategory}`
+                    : "Bienvenido a Jiu Jitsu Store"}
             </h2>
             {
-            loading ? <div>Cargando...</div> : <ItemList products={products} />
+                loading ? <div>Cargando...</div> : <ItemList products={products} />
             }
         </div>
     )

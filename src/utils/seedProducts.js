@@ -1,8 +1,12 @@
+import db from "../db/db.js";
+import { addDoc, collection } from "firebase/firestore";
+
+
 const products = [
     {
         id: "kimono1",
         name: "Kimono Vital Negro 1",
-        descripcion: "Kimono Vital Negro",
+        description: "Kimono Vital Negro",
         price: 100000,
         stock: 5,
         category: "kimonos",
@@ -11,7 +15,7 @@ const products = [
     {
         id: "kimono2",
         name: "Kimono Vital Negro 2",
-        descripcion: "Kimono Vital Negro",
+        description: "Kimono Vital Negro",
         price: 110000,
         stock: 5,
         category: "kimonos",
@@ -20,7 +24,7 @@ const products = [
     {
         id: "kimono3",
         name: "Kimono Vital Azul",
-        descripcion: "Kimono Vital Azul",
+        description: "Kimono Vital Azul",
         price: 120000,
         stock: 5,
         category: "kimonos",
@@ -29,7 +33,7 @@ const products = [
     {
         id: "kimono4",
         name: "Kimono Vital Blanco",
-        descripcion: "Kimono Vital Blanco",
+        description: "Kimono Vital Blanco",
         price: 130000,
         stock: 5,
         category: "kimonos",
@@ -38,7 +42,7 @@ const products = [
     {
         id: "kimono5",
         name: "Kimono Vital Verde Agua",
-        descripcion: "Kimono Vital Verde Agua",
+        description: "Kimono Vital Verde Agua",
         price: 140000,
         stock: 5,
         category: "kimonos",
@@ -47,7 +51,7 @@ const products = [
     {
         id: "kimono6",
         name: "Kimono Vital Naranja",
-        descripcion: "Kimono Vital Naranja",
+        description: "Kimono Vital Naranja",
         price: 160000,
         stock: 5,
         category: "kimonos",
@@ -56,7 +60,7 @@ const products = [
     {
         id: "rash1",
         name: "Rashguard Vouk Morado",
-        descripcion: "Rashguard Roxa",
+        description: "Rashguard Roxa",
         price: 40000,
         stock: 10,
         category: "nogi",
@@ -65,7 +69,7 @@ const products = [
     {
         id: "rash2",
         name: "Rashguard Vouk Marrón",
-        descripcion: "Rashguard Marron",
+        description: "Rashguard Marron",
         price: 40000,
         stock: 10,
         category: "nogi",
@@ -74,7 +78,7 @@ const products = [
     {
         id: "polera1",
         name: "Polera",
-        descripcion: "Polera",
+        description: "Polera",
         price: 20000,
         stock: 10,
         category: "street",
@@ -83,7 +87,7 @@ const products = [
     {
         id: "polera2",
         name: "Polera",
-        descripcion: "Polera",
+        description: "Polera",
         price: 20000,
         stock: 10,
         category: "street",
@@ -92,7 +96,7 @@ const products = [
     {
         id: "gorro1",
         name: "Gorro Jiu Jitsu",
-        descripcion: "Gorro Jiu Jitsu",
+        description: "Gorro Jiu Jitsu",
         price: 10000,
         stock: 10,
         category: "accesorios",
@@ -101,7 +105,7 @@ const products = [
     {
         id: "gorro2",
         name: "Gorro Jiu Jitsu",
-        descripcion: "Gorro Jiu Jitsu",
+        description: "Gorro Jiu Jitsu",
         price: 10000,
         stock: 10,
         category: "accesorios",
@@ -110,7 +114,7 @@ const products = [
     {
         id: "mochila1",
         name: "Mochila Jiu Jitsu",
-        descripcion: "Mochila Jiu Jitsu",
+        description: "Mochila Jiu Jitsu",
         price: 50000,
         stock: 3,
         category: "accesorios",
@@ -119,7 +123,7 @@ const products = [
     {
         id: "mochila2",
         name: "Bolso Jiu Jitsu",
-        descripcion: "Bolso Jiu Jitsu",
+        description: "Bolso Jiu Jitsu",
         price: 25000,
         stock: 3,
         category: "accesorios",
@@ -128,14 +132,10 @@ const products = [
        
 ]
 
-//obtener porductos
-const getProducts = () => {
-    return new Promise((resolve, reject) => {
-        //simulamos un retraso de red
-        setTimeout(() => {
-            resolve(products)
-        }, 3000);
+const seedProducts = () => {
+    products.map(({id, ...rest}) =>{
+        addDoc(collection(db, "products"), rest)
     });
-};
+}
 
-export default getProducts
+seedProducts()
