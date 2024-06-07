@@ -30,6 +30,7 @@ if(carrito.length === 0){
             ))
         }
         <h2> Total Compra: {precioTotal()} </h2>
+        <Link to="/checkout"> Continuar con la compra </Link>
         <button onClick={vaciarCarrito}>Vaciar Carrito</button>
     </div>
   )

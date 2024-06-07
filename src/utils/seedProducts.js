@@ -138,4 +138,4 @@ const seedProducts = () => {
     });
 }
 
-seedProducts()
+//seedProducts()
