@@ -11,7 +11,8 @@ const Checkout = () => {
     const [datosForm, setDatosForm] = useState({
         nombre: "",
         telefono: "",
-        email: ""
+        email: "",
+        email2: ""
     });
     const [idOrden, setIdOrden] = useState(null)
     const { carrito, precioTotal, vaciarCarrito } = useContext(CartContext)
@@ -33,14 +34,14 @@ const Checkout = () => {
         try {
             //validar formulario
             const response = await validateForm(datosForm)
-            if (response.status === "success") {
+            if (response.status === "success" && datosForm.email === datosForm.email2 ) {
                 generateOrder(orden);
             } else {
-                toast.warning(response.message)
+                toast.warning("Datos ingresados incorrectamente")
             }
         } catch (error) {
             toast.error("Orden no enviada")
-        }
+        };
     };
 
     const generateOrder = (orden) => {

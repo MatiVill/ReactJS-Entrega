@@ -13,6 +13,9 @@ const Formulario = ( {datosForm, handleChangeInput, handleSubmitForm} ) => {
             <label>Email: </label>
             <input type="email" name="email" value={datosForm.email} onChange={handleChangeInput} />
 
+            <label> Confirmar Email: </label>
+            <input type="email" name="email2" value={datosForm.email2} onChange={handleChangeInput} />
+
             <button type="submit"> Enviar Orden </button>
         </form>
     )
