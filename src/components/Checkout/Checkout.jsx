@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
+import validateForm from "../../utils/validationYup.js";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
     const [datosForm, setDatosForm] = useState({
@@ -19,7 +21,7 @@ const Checkout = () => {
 
     }
 
-    const handleSubmitForm = (event) => {
+    const handleSubmitForm = async (event) => {
         event.preventDefault()
         //formato a los datos a subir
         const orden = {
@@ -27,8 +29,18 @@ const Checkout = () => {
             productos: [...carrito],
             fecha: Timestamp.fromDate(new Date()),
             total: precioTotal()
+        };
+        try {
+            //validar formulario
+            const response = await validateForm(datosForm)
+            if (response.status === "success") {
+                generateOrder(orden);
+            } else {
+                toast.warning(response.message)
+            }
+        } catch (error) {
+            toast.error("Orden no enviada")
         }
-        generateOrder(orden)
     };
 
     const generateOrder = (orden) => {
@@ -43,14 +55,14 @@ const Checkout = () => {
     };
 
     const updateStock = () => {
-        carrito.map((productoCarrito)=> {
+        carrito.map((productoCarrito) => {
             let quantity = productoCarrito.quantity
             delete productoCarrito.quantity
 
             const productoRef = doc(db, "products", productoCarrito.id)
             setDoc(productoRef, { ...productoCarrito, stock: productoCarrito.stock - quantity })
-                .then(()=> console.log("Stock actualizado correctamente"))
-                .catch((error)=> console.log(error))
+                .then(() => console.log("Stock actualizado correctamente"))
+                .catch((error) => console.log(error))
         })
     }
 
