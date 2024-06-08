@@ -27,7 +27,7 @@ const ItemDetail = ({ product }) => {
         {ocultarCount ? (
           <Link className="button-cart" to="/cart">Ir al carrito</Link>
         ) : (
-          <ItemCount stock={product.stock} addProduct={addProduct} />
+          <ItemCount className="contador" stock={product.stock} addProduct={addProduct} />
         )}
       </div>
     </div>

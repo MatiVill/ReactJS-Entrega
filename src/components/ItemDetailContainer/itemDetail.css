@@ -19,3 +19,21 @@
   .text-detail{
     font-size: 20px;
   }
+
+  .button-cart {
+    font-weight: 700;
+    font-size: large;
+    border: solid 2px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.button-cart:hover {
+  cursor: pointer;
+  background-color: rgb(87, 87, 87);
+  color: whitesmoke;
+}
+.contador {
+  display: flex;
+
+}
